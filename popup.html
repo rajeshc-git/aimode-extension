@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- WXT берёт отсюда action.default_title — подсказку у иконки; браузер
+         подставит имя из _locales по языку. Сам заголовок попапа не виден,
+         а main.ts заменяет его тем же именем. -->
+    <title>__MSG_extName__</title>
+    <script type="module" crossorigin src="/chunks/popup-BNQyu8Vd.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/popup-BJLaCPuJ.css">
+  </head>
+  <!--
+    Попап — вариант A с холста 2026-10-05 (ссылка — docs/development.md,
+    «Лицензия AI Mode Cleaner»): в стиле etcetera.tools — тёплая бумага, плашка статуса цвета расширения,
+    кнопки на жёсткой тени. Одна тема на любую тему браузера, как у сайта.
+
+    Тексты и видимость блоков проставляет main.ts по состоянию Pro: пробник,
+    Free, окно, купленный ключ и ключ с ошибкой. Разметка общая на все состояния.
+
+    С 1.2.0 — вариант A1 (выбор владельца 2026-10-25; ссылки на холсты — в шапке
+    src/page-theme-picker.ts: комментарии разметки уезжают в пакет, а туда им незачем):
+    имя в две строки, плашка-счётчик лимита, «Pro adds» и покупка одной карточкой,
+    сведения о ключе свёрнуты до аккаунта, под «Open AI Mode» — темы страницы.
+  -->
+  <body>
+    <main class="popup">
+      <header class="head">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#2f45c9" />
+          <rect x="10" y="4" width="16" height="10" rx="3" fill="#fff" opacity=".45" />
+          <rect x="6" y="10" width="18" height="14" rx="4" fill="#fff" />
+          <path d="M8 22v6l6-6z" fill="#fff" />
+          <path d="M12 14l6 6M18 14l-6 6" fill="none" stroke="#2f45c9" stroke-width="2.4" stroke-linecap="round" />
+        </svg>
+        <!-- Имя по смыслу в две строки: что делает и где. -->
+        <h1 class="name"><b id="name-top">Bulk Delete Chats</b><small id="name-bottom">for Google™ AI Mode</small></h1>
+        <!-- Тариф и язык — столбиком справа: в одну строку с именем флаг отнимал у него
+             ширину, и длинные имена рвались. Переключатель собирает src/i18n/picker.ts. -->
+        <div class="head-side">
+          <span class="badge" id="badge"></span>
+          <span id="lang"></span>
+        </div>
+      </header>
+
+      <!-- Слева лимит крупно (5 в пробнике, 1 во Free, ∞ в Pro), справа что он значит,
+           под пробником деления остатка. -->
+      <section class="plate" id="plate" aria-live="polite">
+        <span class="counter-num" id="counter-num" aria-hidden="true"></span>
+        <div class="counter-text">
+          <p class="plate-title" id="plate-title"></p>
+          <p class="plate-sub" id="plate-sub"></p>
+          <span class="pips" id="pips" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <p class="issue" id="issue" hidden></p>
+
+      <!-- Ключ и браузеры нужны редко — когда с ключом что-то не так: свёрнуто видно
+           только аккаунт, остальное — по шеврону. -->
+      <div class="facts" id="facts" hidden>
+        <dl class="facts-list" id="facts-list">
+          <dt id="fact-account-label"></dt>
+          <dd class="mono" id="fact-account"></dd>
+          <dt id="fact-key-label"></dt>
+          <dd class="mono" id="fact-key"></dd>
+          <dt id="fact-browsers-label"></dt>
+          <dd id="fact-browsers"></dd>
+        </dl>
+        <button type="button" class="facts-toggle" id="facts-toggle" aria-controls="facts-list">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+        </button>
+      </div>
+
+      <section class="upsell" id="upsell" hidden style="display: none !important;">
+        <div class="features" id="features">
+          <p class="features-head" id="features-head"></p>
+          <ul class="features-list" id="features-list"></ul>
+        </div>
+        <a class="btn btn--sky" id="buy" target="_blank" rel="noopener" hidden style="display: none !important;"></a>
+      </section>
+
+      <div class="actions">
+        <button type="button" class="btn btn--ink" id="open"></button>
+
+        <!-- Темы страницы режима ИИ: собирает src/page-theme-picker.ts, стили — .theme* в style.css. -->
+        <section class="themes" id="themes" aria-labelledby="themes-label"></section>
+
+        <div class="links" id="links">
+          <a id="manage" target="_blank" rel="noopener"></a>
+          <button type="button" class="link" id="reactivate"></button>
+          <button type="button" class="link" id="enter-key"></button>
+          <button type="button" class="link" id="remove-key"></button>
+        </div>
+
+        <form class="key-form" id="key-form" hidden>
+          <label class="key-label" for="key-input" id="key-label"></label>
+          <input class="key-input mono" id="key-input" type="text" autocomplete="off" spellcheck="false" required>
+          <div class="key-row">
+            <button type="submit" class="btn btn--ink btn--sm" id="key-submit"></button>
+            <button type="button" class="link" id="key-cancel"></button>
+          </div>
+        </form>
+
+        <p class="note" id="note" role="status"></p>
+      </div>
+    </main>
+  </body>
+</html>

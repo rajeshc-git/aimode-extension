@@ -1,0 +1,10 @@
+{
+   "extDescription": {
+      "description": "Короткое описание: chrome://extensions и карточка стора, до 132 знаков.",
+      "message": "Not one by one, not all at once: just the chats you pick. The history tools Google™ AI Mode should have had."
+   },
+   "extName": {
+      "description": "Имя расширения: его рисует браузер и карточка стора. По-английски — решение владельца 2026-10-05 (CHROMEWEBSTORE.md, «Листинг»); в остальных языках переводится целиком, а «AI Mode» пишется так, как режим называет Google на этом языке (справка Google, сверено 2026-10-05). Не длиннее 45 знаков — лимит Edge Add-ons.",
+      "message": "Bulk Delete Chats for Google™ AI Mode"
+   }
+}

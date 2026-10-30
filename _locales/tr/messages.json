@@ -1,0 +1,10 @@
+{
+   "extDescription": {
+      "description": "Короткое описание: chrome://extensions и карточка стора, до 132 знаков.",
+      "message": "Tek tek değil, hepsi birden değil: yalnızca seçtiğiniz sohbetler. Google™ AI Modu'nda çoktan olması gereken geçmiş araçları."
+   },
+   "extName": {
+      "description": "Имя расширения: его рисует браузер и карточка стора. По-английски — решение владельца 2026-10-05 (CHROMEWEBSTORE.md, «Листинг»); в остальных языках переводится целиком, а «AI Mode» пишется так, как режим называет Google на этом языке (справка Google, сверено 2026-10-05). Не длиннее 45 знаков — лимит Edge Add-ons.",
+      "message": "Google™ AI Modu sohbetlerini toplu silme"
+   }
+}
